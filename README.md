@@ -11,7 +11,7 @@
 <h2>🔍 Contracts Detail</h2>
 <br>
 
-<h3>💰 Factory.sol  &&  NFT.sol</h3>
+<h3>🏭 Factory.sol  &&  NFT.sol</h3>
 <br>
 <p><strong>Here we have a factory contract, where anyone can create his/her own collection just passing some parameters(name, symbol, uri and totalSupply).</strong></p>
 <p><strong>Once the transaction it's called, we can retrieve the new NFT COllection Address from the  deployedCollectionAddress.</strong></p>
@@ -35,7 +35,7 @@
 
 
 
-<h3>🌱 DAO.sol    &&     DAOToken.sol</h3>
+<h3>🗣 DAO.sol    &&     DAOToken.sol</h3>
 <br>
 <p><strong>DAO.sol is our DAO, where we can create proposal and vote Yes or No to the proposal</strong></p>
 <p><strong>Even here we ha to initialize different contracts address like: Marketplace, DaoToken, Data.</strong></p>
