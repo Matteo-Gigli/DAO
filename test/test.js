@@ -127,7 +127,7 @@ describe("Testing Contracts Functionality", function(){
 
     it("should be able to create a Proposal to buy nft on Marketplace", async()=>{
         let takeAddressCollection = await factory.deployedCollectionAddress(0);
-        await dao.connect(account2).createProposalToBuy(takeAddressCollection, 2, 1668759841);
+        await dao.connect(account2).createProposalToBuy(takeAddressCollection, 2, 1668767041);
         let proposal = await dao.proposalDetails(1);
         let proposalPrice = await proposal.price;
         expect(proposalPrice).to.be.equal("10000000000000000");
@@ -146,9 +146,14 @@ describe("Testing Contracts Functionality", function(){
     });
 
 
+    it("increasing time", async()=>{
+        await hre.network.provider.send("hardhat_mine", ["0x10000"]);
+    })
+
+
 
     it("should be able to buy the Token from the marketplace", async()=>{
-        await dao.executeProposal(1);
+        await dao.connect(owner).executeProposal(1);
         let DAOTokenBalance = await NFT.balanceOf(dao.address);
         expect(DAOTokenBalance).to.be.equal(1);
     })

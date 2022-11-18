@@ -39,6 +39,7 @@ contract DAO is Ownable, ERC721Holder{
     error FaucetEmptyOrOwnerCaller();
     error setCorrectPrice();
     error SomeReason();
+    error timingOrNoOnProposal();
 
 
 
@@ -107,7 +108,6 @@ contract DAO is Ownable, ERC721Holder{
         }
 
 
-    //DA CONTROLLARE LO SPOSTAMENTO DI ALREADY VOTE E IL TIMESTAMP
     function voteYesOnProposal(uint proposalId)public{
         if(
             daoToken.balanceOf(msg.sender) > 1*10**18 &&
@@ -124,7 +124,7 @@ contract DAO is Ownable, ERC721Holder{
     }
 
 
-    //DA CONTROLLARE LO SPOSTAMENTO DI ALREADY VOTE E IL TIMESTAMP
+
     function voteNoOnProposal(uint proposalId)public{
         if(
             daoToken.balanceOf(msg.sender) > 1*10**18 &&
@@ -143,19 +143,20 @@ contract DAO is Ownable, ERC721Holder{
 
 
 
-    function executeProposal(uint proposalId)public{
+    function executeProposal(uint proposalId)public onlyOwner{
         uint proposalDeadline =  proposalDetails[proposalId].timeline;
         uint proposalYes = proposalDetails[proposalId].voteYes;
         uint proposalNo = proposalDetails[proposalId].voteNo;
         uint tokenId = proposalDetails[proposalId].tokenId;
         address collectionAddress = proposalDetails[proposalId].collectionAddress;
         uint tokenPrice = proposalDetails[proposalId].price;
-        if(proposalDeadline > block.timestamp &&
+        if(block.timestamp > proposalDeadline &&
             proposalYes > proposalNo
             ){
-               marketplace.buyNft{value: tokenPrice}(collectionAddress, tokenId);
-            }else{
+                marketplace.buyNft{value: tokenPrice}(collectionAddress, tokenId);
                 delete proposalDetails[proposalId];
+            }else{
+                revert timingOrNoOnProposal();
             }
     }
 }

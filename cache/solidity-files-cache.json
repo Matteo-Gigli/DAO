@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "C:\\Users\\Danilo Gigli\\Desktop\\Solidity\\myProjects\\DAO\\contracts\\Collection\\Factory.sol": {
-      "lastModificationDate": 1668703982110,
-      "contentHash": "5621aeb85070b64f8e91370134fde97c",
+      "lastModificationDate": 1668760471042,
+      "contentHash": "9db28bc4f6e840778fa9588c73677671",
       "sourceName": "contracts/Collection/Factory.sol",
       "solcConfig": {
         "version": "0.8.4",
@@ -29,7 +29,6 @@
         }
       },
       "imports": [
-        "@openzeppelin/contracts/access/Ownable.sol",
         "./NFT.sol"
       ],
       "versionPragmas": [
@@ -745,8 +744,8 @@
       ]
     },
     "C:\\Users\\Danilo Gigli\\Desktop\\Solidity\\myProjects\\DAO\\contracts\\DAO\\DAO.sol": {
-      "lastModificationDate": 1668759290858,
-      "contentHash": "bd5725d49caa32b705155448974f864b",
+      "lastModificationDate": 1668760997538,
+      "contentHash": "98259a97ba9eece11322d16f8e8d2d5c",
       "sourceName": "contracts/DAO/DAO.sol",
       "solcConfig": {
         "version": "0.8.4",
